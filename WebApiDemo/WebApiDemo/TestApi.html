@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#btn_GET').click(function () {
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:63609/api/values/5',
+                    dataType: 'json',
+                    success: function (data) {
+                        ;
+                    }
+                });
+            });
+
+            $('#btn_AUTHEN').click(function () {
+
+                var username = $('#txt_user').val();
+                var password = $('#txt_pass').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:63609/api/values/5?authen=1',
+                    dataType: 'json',
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(username + ':' + password)
+                    },
+                    success: function (data) {
+                        ;
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <input id="btn_GET" type="button" value="CLICK ME TO HIT THE GET !!!" />
+    <br /><br />
+
+    Username : <input type="text" id="txt_user" />
+    Password : <input type="text" id="txt_pass" />
+    <input id="btn_AUTHEN" type="button" value="Authen ME !!!" />
+
+</body>
+</html>

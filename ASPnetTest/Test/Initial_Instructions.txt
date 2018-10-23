@@ -1,0 +1,1 @@
+For the test you will need to have a *nix system what you have administrator rights on. Please arrange for this to be available before you start. One way to set up such a system quickly is to use VirtualBox with Ubuntu images.

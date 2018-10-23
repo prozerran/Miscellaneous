@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/tripledes.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+
+<script type="text/javascript">
+    function testEncryptedString() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+            }
+        }
+
+        var encmsg = "HelloLetsTestThis";
+
+        // Encrypt
+        //retmsg = CryptoJS.MD5("Message");
+        //var encrypted_str = CryptoJS.TripleDES.encrypt(encmsg, "Passphrase");
+        //var encrypted_str = CryptoJS.TripleDES.decrypt(encmsg, "Passphrase");
+
+//        var key = CryptoJS.enc.Utf8.parse('AMINHAKEYTEM32NYTES1234567891234');
+//        var iv = CryptoJS.enc.Utf8.parse('7061737323313233');
+
+//        //var encodedString = btoa(encmsg);
+//        var encodedString = CryptoJS.enc.Utf8.parse(encmsg);
+
+//        var encrypted_str = CryptoJS.AES.encrypt(encodedString, "Passphrase", key,
+//             {
+//                 keySize: 128,
+//                 iv: iv,
+//                 mode: CryptoJS.mode.CBC,
+//                 padding: CryptoJS.pad.Pkcs7
+        //             });
+
+        var encrypted_str = btoa(encmsg);
+
+        //xmlhttp.open("GET", "http://localhost:3761/Service1.svc/InvokeGetString?str=" + encrypted_str, true);
+        xmlhttp.open("GET", "http://192.168.8.99/WCFWinService/Service1.svc/InvokeGetString?str=" + encrypted_str, true);
+        xmlhttp.send();
+    }
+</script>
+    <style type="text/css">
+        #myDiv
+        {
+            height: 371px;
+            width: 519px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Test Javascript Encrypted String</h2>
+<button type="button" onclick="testEncryptedString()">Request Decrtyped Data</button>
+<br />
+
+<!--http://localhost:3761/TestEncryptedString.htm-->
+<!--http://192.168.8.99/WCFWinService/TestEncryptedString.htm-->
+
+    <p>
+        <textarea id="myDiv" name="S1" readonly="readonly"></textarea></p>
+ 
+</body>
+</html>

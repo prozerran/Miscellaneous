@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="http://192.168.8.99" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="Default Web Site" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="Administrator" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqfUYljDBa0yvS2f0+3gQLQAAAAACAAAAAAAQZgAAAAEAACAAAACOugBc0mg9U29RFM9gRfOk0h4U66GA/GDKILdzCFvAbQAAAAAOgAAAAAIAACAAAACJA7ZICe1D8SZpuynPMUbTJnJEebRbVevRU6/14JpqByAAAAB0/4dEm7PrDQasZiCV3knydNaVRitqv+/zkz+QPSY520AAAAAeub0cxIrceg9KYkLfTjAEwqaggHgjjlR8sPU62RqTQlCeuw0lZ0XXqfUqCzguFtu05bqKNL64wI6K4eL3AlLV" SelectedForPublish="True" />
+</publishData>

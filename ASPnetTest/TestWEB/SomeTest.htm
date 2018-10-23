@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        #Select1
+        {
+            width: 166px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        Enter Name: 
+        <input type="text" ng-model="name1" /> {{ name1 }}
+        <script src="Scripts/angular.min.js"></script>
+    </div>
+
+    <div class="container">
+        <div ng-app="" ng-controller="myController">
+        <button ng-click="count = count + 1">AngularJS Button</button>
+
+        <p>{{ count }}</p>
+
+        </div>
+        <script>
+            function myController($scope) 
+            {
+                $scope.count = 0;
+            }
+        </script> 
+        <script src="Scripts/angular.min.js"></script>
+    </div>
+
+    <p>Connect to DB, maybe works in Microsoft IE only!</p>
+    <script type="text/javascript">
+        function ConnectDB() {
+            var connection = new ActiveXObject("ADODB.Connection");
+
+            var connectionstring = "Data Source=192.168.8.99;Initial Catalog=TestDatabase1;User ID=Administrator;Password=Pa$$word;Provider=SQLOLEDB";
+
+            connection.Open(connectionstring);
+            var rs = new ActiveXObject("ADODB.Recordset");
+
+            rs.Open("SELECT * FROM Table1", connection);
+            rs.MoveFirst
+            while (!rs.eof) {
+                document.write(rs.fields(1));
+                rs.movenext;
+            }
+
+            rs.close;
+            connection.close;
+        }
+
+        function StepIn() {
+            this.alert("StepIn");
+        }
+    </script>
+
+    <p>
+        <input id="Button1" type="button" value="ConnectDB" onclick="return ConnectDB()" />
+        <input id="Button2" type="button" value="Step In" onclick="return StepIn()" />                    
+    </p>
+
+</body>
+</html>

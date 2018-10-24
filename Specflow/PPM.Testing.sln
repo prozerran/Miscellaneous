@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPM.Testing.Specs", "Testing.Specs\PPM.Testing.Specs.csproj", "{9A478300-4826-4C23-8491-43EFF66B5646}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Dynamics365.UIAutomation.Browser", "Microsoft.Dynamics365.UIAutomation.Browser\Microsoft.Dynamics365.UIAutomation.Browser.csproj", "{C9748803-F3CB-4531-B313-BC24D4D0BF0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Dynamics365.UIAutomation.Api", "Microsoft.Dynamics365.UIAutomation.Api\Microsoft.Dynamics365.UIAutomation.Api.csproj", "{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPM.Testing.Browser", "Testing.Browser\PPM.Testing.Browser.csproj", "{F00EF9DB-7900-4AD0-AA0D-B61A2978F68F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPM.Testing.Api", "Testing.Api\PPM.Testing.Api.csproj", "{7BF013C3-ED94-402B-ADD3-C1270EB58032}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A478300-4826-4C23-8491-43EFF66B5646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A478300-4826-4C23-8491-43EFF66B5646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A478300-4826-4C23-8491-43EFF66B5646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A478300-4826-4C23-8491-43EFF66B5646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00EF9DB-7900-4AD0-AA0D-B61A2978F68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00EF9DB-7900-4AD0-AA0D-B61A2978F68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00EF9DB-7900-4AD0-AA0D-B61A2978F68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00EF9DB-7900-4AD0-AA0D-B61A2978F68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF013C3-ED94-402B-ADD3-C1270EB58032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF013C3-ED94-402B-ADD3-C1270EB58032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF013C3-ED94-402B-ADD3-C1270EB58032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF013C3-ED94-402B-ADD3-C1270EB58032}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0944DD24-9444-4CF1-96E0-CB3F14125C7D}
+	EndGlobalSection
+EndGlobal

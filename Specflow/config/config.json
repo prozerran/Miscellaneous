@@ -1,0 +1,57 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "landing-page-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/landingPage/LandingPageWebPart.js",
+          "manifest": "./src/webparts/landingPage/LandingPageWebPart.manifest.json"
+        }
+      ]
+    },
+    "project-team-page-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/projectTeamPage/ProjectTeamPageWebPart.js",
+          "manifest": "./src/webparts/projectTeamPage/ProjectTeamPageWebPart.manifest.json"
+        }
+      ]
+    },
+    "spmo-page-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spmoPage/SpmoPageWebPart.js",
+          "manifest": "./src/webparts/spmoPage/SpmoPageWebPart.manifest.json"
+        }
+      ]
+    },
+    "project-details-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/projectDetails/ProjectDetailsWebPart.js",
+          "manifest": "./src/webparts/projectDetails/ProjectDetailsWebPart.manifest.json"
+        }
+      ]
+    },
+    "version-history-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/versionHistory/VersionHistoryWebPart.js",
+          "manifest": "./src/webparts/versionHistory/VersionHistoryWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": "node_modules/jquery/dist/jquery.min.js",
+    "jqueryui": "node_modules/jqueryui/jquery-ui.min.js"
+  },
+  "localizedResources": {
+    "LandingPageWebPartStrings": "lib/webparts/landingPage/loc/{locale}.js",
+    "ProjectTeamPageWebPartStrings": "lib/webparts/projectTeamPage/loc/{locale}.js",
+    "SpmoPageWebPartStrings": "lib/webparts/spmoPage/loc/{locale}.js",
+    "ProjectDetailsWebPartStrings": "lib/webparts/projectDetails/loc/{locale}.js",
+    "VersionHistoryWebPartStrings": "lib/webparts/versionHistory/loc/{locale}.js"
+  }
+}

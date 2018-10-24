@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Project Prioritization Platform for Dev",
+    "id": "147bb3a0-cf94-43ed-a4db-0a893b0df3b6",
+    "version": "0.1.1.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/pruhk-ppm-dev.sppkg"
+  }
+}

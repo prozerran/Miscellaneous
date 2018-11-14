@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestEngine", "QuestEngine\QuestEngine.csproj", "{2B401801-A937-4C9C-8702-1627E60C9A8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestEngine.Tests", "QuestEngine.Tests\QuestEngine.Tests.csproj", "{A879B70C-86E8-4529-A4B3-FFBEC5A6D0BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B401801-A937-4C9C-8702-1627E60C9A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B401801-A937-4C9C-8702-1627E60C9A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B401801-A937-4C9C-8702-1627E60C9A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B401801-A937-4C9C-8702-1627E60C9A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A879B70C-86E8-4529-A4B3-FFBEC5A6D0BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A879B70C-86E8-4529-A4B3-FFBEC5A6D0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A879B70C-86E8-4529-A4B3-FFBEC5A6D0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A879B70C-86E8-4529-A4B3-FFBEC5A6D0BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA14B4FB-E7D6-4457-B8E5-61505AD32F79}
+	EndGlobalSection
+EndGlobal

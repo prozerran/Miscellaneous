@@ -1,0 +1,66 @@
+{
+  "RateFromBet": 2,
+  "LevelBonusRate": 3,
+  "Quests": [
+    {
+      "PointsCompleted": 10000,
+      "MileStones": [
+        { "PointsCompleted": 1000, "ChipsAwarded": 1000 },
+        { "PointsCompleted": 2000, "ChipsAwarded": 1100 },
+        { "PointsCompleted": 3000, "ChipsAwarded": 1200 },
+        { "PointsCompleted": 4000, "ChipsAwarded": 1300 },
+        { "PointsCompleted": 5000, "ChipsAwarded": 1400 },
+        { "PointsCompleted": 6000, "ChipsAwarded": 1500 },
+        { "PointsCompleted": 7000, "ChipsAwarded": 1600 },
+        { "PointsCompleted": 8000, "ChipsAwarded": 1700 },  
+        { "PointsCompleted": 9000, "ChipsAwarded": 1800 },
+        { "PointsCompleted": 10000, "ChipsAwarded": 2000 }   
+      ]
+    },
+    {
+      "PointsCompleted": 20000,
+      "MileStones": [
+        { "PointsCompleted": 2000, "ChipsAwarded": 2000 },
+        { "PointsCompleted": 4000, "ChipsAwarded": 2100 },
+        { "PointsCompleted": 6000, "ChipsAwarded": 2200 },
+        { "PointsCompleted": 8000, "ChipsAwarded": 2300 },
+        { "PointsCompleted": 10000, "ChipsAwarded": 2400 },
+        { "PointsCompleted": 12000, "ChipsAwarded": 2500 },
+        { "PointsCompleted": 14000, "ChipsAwarded": 2600 },
+        { "PointsCompleted": 16000, "ChipsAwarded": 2700 },  
+        { "PointsCompleted": 18000, "ChipsAwarded": 2800 },
+        { "PointsCompleted": 20000, "ChipsAwarded": 3000 }   
+      ]
+    },
+    {
+      "PointsCompleted": 50000,
+      "MileStones": [
+        { "PointsCompleted": 5000, "ChipsAwarded": 10000 },
+        { "PointsCompleted": 10000, "ChipsAwarded": 11000 },
+        { "PointsCompleted": 15000, "ChipsAwarded": 12000 },
+        { "PointsCompleted": 20000, "ChipsAwarded": 13000 },          
+        { "PointsCompleted": 25000, "ChipsAwarded": 14000 },
+        { "PointsCompleted": 30000, "ChipsAwarded": 15000 },
+        { "PointsCompleted": 35000, "ChipsAwarded": 16000 },
+        { "PointsCompleted": 40000, "ChipsAwarded": 17000 },      
+        { "PointsCompleted": 45000, "ChipsAwarded": 18000 },
+        { "PointsCompleted": 50000, "ChipsAwarded": 20000 } 
+      ]
+    },
+    {
+      "PointsCompleted": 100000,
+      "MileStones": [
+        { "PointsCompleted": 10000, "ChipsAwarded": 20000 },
+        { "PointsCompleted": 20000, "ChipsAwarded": 21000 },
+        { "PointsCompleted": 30000, "ChipsAwarded": 22000 },
+        { "PointsCompleted": 40000, "ChipsAwarded": 23000 },          
+        { "PointsCompleted": 50000, "ChipsAwarded": 24000 },
+        { "PointsCompleted": 60000, "ChipsAwarded": 25000 },
+        { "PointsCompleted": 70000, "ChipsAwarded": 26000 },
+        { "PointsCompleted": 80000, "ChipsAwarded": 27000 },      
+        { "PointsCompleted": 90000, "ChipsAwarded": 28000 },
+        { "PointsCompleted": 100000, "ChipsAwarded": 30000 } 
+      ]
+    }        
+  ]
+}

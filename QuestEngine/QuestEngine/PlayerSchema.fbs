@@ -1,0 +1,12 @@
+// Example IDL file for our player's schema.
+
+namespace QuestEngine.PlayerData;
+
+table Player {
+  name:string;				// name of player
+  quest:int = 0;			// current quest, start at 0
+  milestone:int = 0;		// current milestone
+  pointsearned:long = 0;	// total points accumuated for current quest
+}
+
+root_type Player;

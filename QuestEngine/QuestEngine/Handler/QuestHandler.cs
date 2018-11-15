@@ -60,7 +60,7 @@ namespace QuestEngine.Handler
             var ms = GetMileStoneCompleted(qq, pp);
 
             // update & save player latest info
-            pp.MilestoneIndex = ms.MilestoneIndex;
+            pp.MilestoneIndex = ms == null ? pp.MilestoneIndex : ms.MilestoneIndex;
             pdm.Save(pp);
 
             // determine if quest leveled up to new quest!
@@ -70,7 +70,7 @@ namespace QuestEngine.Handler
             {
                 QuestPointsEarned = qpe,
                 TotalQuestPercentCompleted = qpc,
-                MilestonesCompleted = new Milestone(ms.MilestoneIndex, ms.ChipsAwarded)
+                MilestonesCompleted = ms
             };
             return prc;
         }
@@ -82,22 +82,37 @@ namespace QuestEngine.Handler
 
         private Milestone GetMileStoneCompleted(Quest q, PlayerProfile p)
         {
-            var ms = new Milestone(p.MilestoneIndex, 0);
-            var m = q.MileStones[p.MilestoneIndex];
-            
+            Milestone ms = null;
+            MileStone m = new MileStone();
+
+            // TODO: Need to handle all quest finished properly,
+            // catch and return null for now
+            try
+            {
+                m = q.MileStones[p.MilestoneIndex];
+            }
+            catch
+            {
+                // all quest and milestone complete, return null
+                return null;
+            }
+          
+            // determine if we've reached a new milestone
             if (p.PointsEarned > m.PointsCompleted)
             {
+                ms = new Milestone();
                 ms.MilestoneIndex = p.MilestoneIndex + 1;   // level up milestone!
-                ms.ChipsAwarded = m.ChipsAwarded;              
+                ms.ChipsAwarded = m.ChipsAwarded;
             }
             return ms;
         }
         
         private void LeveledUpQuest(Quest q, PlayerProfile p)
         {
+            // determine if we reached a new quest
             if (p.PointsEarned >= q.PointsCompleted)
             {
-                p.QuestIndex += 1;
+                p.QuestIndex += 1; // move onto next quest
 
                 if (qcm.GetQuest(p.QuestIndex) != null)
                 {

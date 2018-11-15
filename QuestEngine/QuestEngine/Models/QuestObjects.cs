@@ -5,14 +5,8 @@ using System.Web;
 
 namespace QuestEngine.Models
 {
-    public struct Milestone
+    public class Milestone
     {
-        public Milestone(int m, int c)
-        {
-            MilestoneIndex = m;
-            ChipsAwarded = c;
-        }
-
         public int MilestoneIndex { get; set; }
         public int ChipsAwarded { get; set; }
     }

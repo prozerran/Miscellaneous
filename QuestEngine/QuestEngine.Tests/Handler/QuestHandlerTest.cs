@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace QuestEngine.Tests
 {
     [TestClass]
-    public class TestQuestEngine
+    public class QuestHandlerTest
     {
         const string player_name = "Player_X";
         /*

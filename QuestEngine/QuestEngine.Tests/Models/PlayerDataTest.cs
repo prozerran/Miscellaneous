@@ -2,10 +2,10 @@
 using QuestEngine.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace QuestEngine.Tests
+namespace QuestEngine.Tests.PlayerData
 {
     [TestClass]
-    public class TestPlayerData
+    public class PlayerDataTest
     {
         const string player_name = "Player_X";
 

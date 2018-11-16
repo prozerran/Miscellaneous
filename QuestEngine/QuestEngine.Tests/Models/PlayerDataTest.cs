@@ -9,8 +9,18 @@ namespace QuestEngine.Tests.PlayerData
     {
         const string player_name = "Player_X";
 
+        //[TestMethod]
+        public void Test_1_Delete()
+        {
+            // Arrange
+            var pdm = PlayerDataManager.Instance;
+
+            // Act
+            pdm.Delete(player_name);
+        }
+
         [TestMethod]
-        public void TestSave()
+        public void Test_2_Save()
         {
             // Arrange
             var pdm = PlayerDataManager.Instance;
@@ -30,7 +40,7 @@ namespace QuestEngine.Tests.PlayerData
         }
 
         [TestMethod]
-        public void TestLoad()
+        public void Test_3_Load()
         {
             // Arrange
             var pdm = PlayerDataManager.Instance;

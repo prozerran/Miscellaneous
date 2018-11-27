@@ -167,6 +167,7 @@
     </ClCompile>
     <ClCompile Include="ProtocolBuffers.cpp" />
     <ClCompile Include="ProtocolBuffers.pb.cc" />
+    <ClCompile Include="RapidJSON.cpp" />
     <ClCompile Include="Serialization.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

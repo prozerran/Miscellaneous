@@ -2,6 +2,9 @@
 using System.Globalization;
 using System.Windows;
 
+// https://docs.microsoft.com/en-us/bingmaps/rest-services/common-parameters-and-types/supported-culture-codes
+// https://azuliadesigns.com/list-net-culture-country-codes/
+
 namespace ChangeUICulture
 {
     /// <summary>

@@ -10,6 +10,12 @@ using NetMQ.Sockets;
 using FlatBuffers;
 using OrderBook.Book;
 
+// 1. Uses ZeroMQ
+// 2. Uses FlatBuffers
+//		- https://google.github.io/flatbuffers/flatbuffers_guide_use_java_c-sharp.html
+//		- /drives/c/Users/tim.hsu/Documents/Github/vcpkg/packages/flatbuffers_x86-windows/tools/flatbuffers/flatc.exe -n FBSchema.fbs
+
+
 namespace ZMQClientCS
 {
     class Program

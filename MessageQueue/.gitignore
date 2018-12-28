@@ -31,7 +31,6 @@ autom4te.cache/
 .vs/
 bin/
 obj/
-packages/
 
 # macOS files
 .DS_Store

@@ -1,0 +1,32 @@
+// Example IDL file for our monster's schema.
+
+namespace OrderBook.Book;
+
+enum Side:byte { Buy = 0, Sell, Short = 2 }
+
+union Strategies { Contract } // Optionally add more tables.
+
+struct Price {
+  spot:float;
+  open:float;
+  close:float;
+}
+
+table Order {
+  id:long = 1000;
+  price:Price;
+  broker:string;
+  stockcode:string;
+  friendly:bool = false (deprecated);
+  inventory:[ubyte];
+  side:Side = Buy;
+  contracts:[Contract];
+  strategy:Strategies;
+}
+
+table Contract {
+  name:string;
+  price:float;
+}
+
+root_type Order;

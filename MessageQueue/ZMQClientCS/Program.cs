@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using NetMQ;
 using NetMQ.Sockets;
+using NetMQ.Security;
 
 using FlatBuffers;
 using OrderBook.Book;
@@ -14,7 +15,9 @@ using OrderBook.Book;
 // 2. Uses FlatBuffers
 //		- https://google.github.io/flatbuffers/flatbuffers_guide_use_java_c-sharp.html
 //		- /drives/c/Users/tim.hsu/Documents/Github/vcpkg/packages/flatbuffers_x86-windows/tools/flatbuffers/flatc.exe -n FBSchema.fbs
-
+//  3. Security
+//      - https://somdoron.com/2013/05/securing-netmq/
+//      - https://github.com/NetMQ/NetMQ.Security/blob/master/tests/NetMQ.Security.Tests/SecureChannelTests.cs
 
 namespace ZMQClientCS
 {

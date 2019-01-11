@@ -31,8 +31,10 @@ public struct Order : IFlatbufferObject
   public int ContractsLength { get { int o = __p.__offset(18); return o != 0 ? __p.__vector_len(o) : 0; } }
   public Strategies StrategyType { get { int o = __p.__offset(20); return o != 0 ? (Strategies)__p.bb.Get(o + __p.bb_pos) : Strategies.NONE; } }
   public TTable? Strategy<TTable>() where TTable : struct, IFlatbufferObject { int o = __p.__offset(22); return o != 0 ? (TTable?)__p.__union<TTable>(o) : null; }
+  public Instrument? Instruments(int j) { int o = __p.__offset(24); return o != 0 ? (Instrument?)(new Instrument()).__assign(__p.__indirect(__p.__vector(o) + j * 4), __p.bb) : null; }
+  public int InstrumentsLength { get { int o = __p.__offset(24); return o != 0 ? __p.__vector_len(o) : 0; } }
 
-  public static void StartOrder(FlatBufferBuilder builder) { builder.StartObject(10); }
+  public static void StartOrder(FlatBufferBuilder builder) { builder.StartObject(11); }
   public static void AddId(FlatBufferBuilder builder, long id) { builder.AddLong(0, id, 1000); }
   public static void AddPrice(FlatBufferBuilder builder, Offset<Price> priceOffset) { builder.AddStruct(1, priceOffset.Value, 0); }
   public static void AddBroker(FlatBufferBuilder builder, StringOffset brokerOffset) { builder.AddOffset(2, brokerOffset.Value, 0); }
@@ -46,6 +48,9 @@ public struct Order : IFlatbufferObject
   public static void StartContractsVector(FlatBufferBuilder builder, int numElems) { builder.StartVector(4, numElems, 4); }
   public static void AddStrategyType(FlatBufferBuilder builder, Strategies strategyType) { builder.AddByte(8, (byte)strategyType, 0); }
   public static void AddStrategy(FlatBufferBuilder builder, int strategyOffset) { builder.AddOffset(9, strategyOffset, 0); }
+  public static void AddInstruments(FlatBufferBuilder builder, VectorOffset instrumentsOffset) { builder.AddOffset(10, instrumentsOffset.Value, 0); }
+  public static VectorOffset CreateInstrumentsVector(FlatBufferBuilder builder, Offset<Instrument>[] data) { builder.StartVector(4, data.Length, 4); for (int i = data.Length - 1; i >= 0; i--) builder.AddOffset(data[i].Value); return builder.EndVector(); }
+  public static void StartInstrumentsVector(FlatBufferBuilder builder, int numElems) { builder.StartVector(4, numElems, 4); }
   public static Offset<Order> EndOrder(FlatBufferBuilder builder) {
     int o = builder.EndObject();
     return new Offset<Order>(o);

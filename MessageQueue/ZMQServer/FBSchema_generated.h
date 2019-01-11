@@ -15,6 +15,8 @@ struct Order;
 
 struct Contract;
 
+struct Instrument;
+
 enum Side {
   Side_Buy = 0,
   Side_Sell = 1,
@@ -124,7 +126,8 @@ struct Order FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
     VT_SIDE = 16,
     VT_CONTRACTS = 18,
     VT_STRATEGY_TYPE = 20,
-    VT_STRATEGY = 22
+    VT_STRATEGY = 22,
+    VT_INSTRUMENTS = 24
   };
   int64_t id() const {
     return GetField<int64_t>(VT_ID, 1000);
@@ -157,6 +160,9 @@ struct Order FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   const Contract *strategy_as_Contract() const {
     return strategy_type() == Strategies_Contract ? static_cast<const Contract *>(strategy()) : nullptr;
   }
+  const flatbuffers::Vector<flatbuffers::Offset<Instrument>> *instruments() const {
+    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Instrument>> *>(VT_INSTRUMENTS);
+  }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int64_t>(verifier, VT_ID) &&
@@ -174,6 +180,9 @@ struct Order FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
            VerifyField<uint8_t>(verifier, VT_STRATEGY_TYPE) &&
            VerifyOffset(verifier, VT_STRATEGY) &&
            VerifyStrategies(verifier, strategy(), strategy_type()) &&
+           VerifyOffset(verifier, VT_INSTRUMENTS) &&
+           verifier.Verify(instruments()) &&
+           verifier.VerifyVectorOfTables(instruments()) &&
            verifier.EndTable();
   }
 };
@@ -212,6 +221,9 @@ struct OrderBuilder {
   void add_strategy(flatbuffers::Offset<void> strategy) {
     fbb_.AddOffset(Order::VT_STRATEGY, strategy);
   }
+  void add_instruments(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Instrument>>> instruments) {
+    fbb_.AddOffset(Order::VT_INSTRUMENTS, instruments);
+  }
   explicit OrderBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
@@ -234,9 +246,11 @@ inline flatbuffers::Offset<Order> CreateOrder(
     Side side = Side_Buy,
     flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Contract>>> contracts = 0,
     Strategies strategy_type = Strategies_NONE,
-    flatbuffers::Offset<void> strategy = 0) {
+    flatbuffers::Offset<void> strategy = 0,
+    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Instrument>>> instruments = 0) {
   OrderBuilder builder_(_fbb);
   builder_.add_id(id);
+  builder_.add_instruments(instruments);
   builder_.add_strategy(strategy);
   builder_.add_contracts(contracts);
   builder_.add_inventory(inventory);
@@ -258,7 +272,8 @@ inline flatbuffers::Offset<Order> CreateOrderDirect(
     Side side = Side_Buy,
     const std::vector<flatbuffers::Offset<Contract>> *contracts = nullptr,
     Strategies strategy_type = Strategies_NONE,
-    flatbuffers::Offset<void> strategy = 0) {
+    flatbuffers::Offset<void> strategy = 0,
+    const std::vector<flatbuffers::Offset<Instrument>> *instruments = nullptr) {
   return OrderBook::Book::CreateOrder(
       _fbb,
       id,
@@ -269,7 +284,8 @@ inline flatbuffers::Offset<Order> CreateOrderDirect(
       side,
       contracts ? _fbb.CreateVector<flatbuffers::Offset<Contract>>(*contracts) : 0,
       strategy_type,
-      strategy);
+      strategy,
+      instruments ? _fbb.CreateVector<flatbuffers::Offset<Instrument>>(*instruments) : 0);
 }
 
 struct Contract FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
@@ -331,6 +347,80 @@ inline flatbuffers::Offset<Contract> CreateContractDirect(
       _fbb,
       name ? _fbb.CreateString(name) : 0,
       price);
+}
+
+struct Instrument FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+  enum {
+    VT_TAG = 4,
+    VT_VALUE = 6,
+    VT_BLOB = 8
+  };
+  int32_t tag() const {
+    return GetField<int32_t>(VT_TAG, 0);
+  }
+  const flatbuffers::String *value() const {
+    return GetPointer<const flatbuffers::String *>(VT_VALUE);
+  }
+  const flatbuffers::Vector<uint8_t> *blob() const {
+    return GetPointer<const flatbuffers::Vector<uint8_t> *>(VT_BLOB);
+  }
+  bool Verify(flatbuffers::Verifier &verifier) const {
+    return VerifyTableStart(verifier) &&
+           VerifyField<int32_t>(verifier, VT_TAG) &&
+           VerifyOffset(verifier, VT_VALUE) &&
+           verifier.Verify(value()) &&
+           VerifyOffset(verifier, VT_BLOB) &&
+           verifier.Verify(blob()) &&
+           verifier.EndTable();
+  }
+};
+
+struct InstrumentBuilder {
+  flatbuffers::FlatBufferBuilder &fbb_;
+  flatbuffers::uoffset_t start_;
+  void add_tag(int32_t tag) {
+    fbb_.AddElement<int32_t>(Instrument::VT_TAG, tag, 0);
+  }
+  void add_value(flatbuffers::Offset<flatbuffers::String> value) {
+    fbb_.AddOffset(Instrument::VT_VALUE, value);
+  }
+  void add_blob(flatbuffers::Offset<flatbuffers::Vector<uint8_t>> blob) {
+    fbb_.AddOffset(Instrument::VT_BLOB, blob);
+  }
+  explicit InstrumentBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+        : fbb_(_fbb) {
+    start_ = fbb_.StartTable();
+  }
+  InstrumentBuilder &operator=(const InstrumentBuilder &);
+  flatbuffers::Offset<Instrument> Finish() {
+    const auto end = fbb_.EndTable(start_);
+    auto o = flatbuffers::Offset<Instrument>(end);
+    return o;
+  }
+};
+
+inline flatbuffers::Offset<Instrument> CreateInstrument(
+    flatbuffers::FlatBufferBuilder &_fbb,
+    int32_t tag = 0,
+    flatbuffers::Offset<flatbuffers::String> value = 0,
+    flatbuffers::Offset<flatbuffers::Vector<uint8_t>> blob = 0) {
+  InstrumentBuilder builder_(_fbb);
+  builder_.add_blob(blob);
+  builder_.add_value(value);
+  builder_.add_tag(tag);
+  return builder_.Finish();
+}
+
+inline flatbuffers::Offset<Instrument> CreateInstrumentDirect(
+    flatbuffers::FlatBufferBuilder &_fbb,
+    int32_t tag = 0,
+    const char *value = nullptr,
+    const std::vector<uint8_t> *blob = nullptr) {
+  return OrderBook::Book::CreateInstrument(
+      _fbb,
+      tag,
+      value ? _fbb.CreateString(value) : 0,
+      blob ? _fbb.CreateVector<uint8_t>(*blob) : 0);
 }
 
 inline bool VerifyStrategies(flatbuffers::Verifier &verifier, const void *obj, Strategies type) {

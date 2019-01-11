@@ -56,11 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderBook\Contract.cs" />
-    <Compile Include="OrderBook\Order.cs" />
-    <Compile Include="OrderBook\Price.cs" />
-    <Compile Include="OrderBook\Side.cs" />
-    <Compile Include="OrderBook\Strategies.cs" />
+    <Compile Include="OrderBook\Book\Contract.cs" />
+    <Compile Include="OrderBook\Book\Instrument.cs" />
+    <Compile Include="OrderBook\Book\Order.cs" />
+    <Compile Include="OrderBook\Book\Price.cs" />
+    <Compile Include="OrderBook\Book\Side.cs" />
+    <Compile Include="OrderBook\Book\Strategies.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,5 +69,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

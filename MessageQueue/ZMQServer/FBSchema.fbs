@@ -22,11 +22,18 @@ table Order {
   side:Side = Buy;
   contracts:[Contract];
   strategy:Strategies;
+  instruments:[Instrument];
 }
 
 table Contract {
   name:string;
   price:float;
+}
+
+table Instrument {
+  tag:int;
+  value:string;
+  blob:[ubyte];
 }
 
 root_type Order;

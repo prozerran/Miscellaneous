@@ -28,7 +28,7 @@ namespace ZMQClientCS
             string addr = "tcp://localhost:6666";
             Console.WriteLine("Client can connect to: {0}", addr);
 
-            using (var rs = new RequestSocket())
+            using (var rs = new RequestSocket())    // 		// REQ must be send/recv...send/recv in this order
             {
                 rs.Connect(addr);
 
@@ -57,6 +57,18 @@ namespace ZMQClientCS
                     for (int i = 0; i < order.ContractsLength; i++)
                     {
                         Console.WriteLine($"Contract {order.Contracts(i).Value.Name}, {order.Contracts(i).Value.Price}");
+                    }
+
+                    // Instruments
+                    for (int i = 0; i < order.InstrumentsLength; i++)
+                    {
+                        Console.WriteLine($"Instrument {order.Instruments(i).Value.Tag}, {order.Instruments(i).Value.Value}, {order.Instruments(i).Value.BlobLength}");
+                        byte[] bb = order.Instruments(i).Value.GetBlobBytes().Value.Array;
+                        //foreach (byte b in bb)
+                        //{
+                        //    Console.Write($" {b.ToString()}");
+                        //}
+                        //Console.WriteLine();
                     }
 
                     // Get and test the `Equipped` FlatBuffer `union`.

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<style>
+        .b1 {
+            vertical-align: middle;
+            text-align: left;
+            width: 250px;
+        }
+	</style>
+
+	<title>Sample HTML/C# Interop</title>
+
+	<script type="text/javascript">
+
+        //CefSharp.BindObjectAsync("csObj");
+
+		function CallJavaScript(message) {
+			textid.innerHTML = message;
+		}
+
+		function SendTitleToCSharp() {
+            csObj.callCSharp(document.title);
+		}
+
+		function CallCSharp(message) {
+            csObj.callCSharp(message);
+		}
+
+		function CallbacktoCS(message) {
+            csObj.callbacktoCS(message);
+		}
+
+		function CallJavaScriptWithCallback(message) {
+			var str1 = message;
+			var str2 = "Javascript -> ";
+			var str3 = str1.concat(str2);
+
+			CallbacktoCS(str3);
+		}
+
+		function clearAll() {
+            csObj.callCSharp("CS Original Text");
+			window.location.reload(true);
+		}
+
+	</script>
+</head>
+<body style="background-color:#E5F9EF;">
+
+	<h1>WebView JavaScript with Callbacks and Interop</h1>
+
+	<div id="textid" style="color: red; font-size: 16px">JS Original Text</div><br /><br />
+
+	<button class="b1" onclick="CallJavaScript(Date())">Set DateTime from JS</button><br /><br />
+	<button class="b1" onclick="SendTitleToCSharp()">Send Document Title from JS -> CS</button><br /><br />
+	<button class="b1" onclick="CallCSharp(Date())">Send DateTime to CS</button><br /><br />
+	<button class="b1" onclick="CallCSharp('This text is set FROM JavaScript --> CS')">Set Text from JS -> CS</button><br /><br />
+	<button class="b1" onclick="clearAll()">Clear All</button><br /><br />
+
+</body>
+</html>

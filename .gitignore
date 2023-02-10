@@ -1,0 +1,82 @@
+# Ignore CI build directory
+build/
+xcuserdata
+cmake-build-debug/
+.idea/
+# python
+*.pyc
+
+# Visual Studio files
+*.sdf
+*.opensdf
+*.VC.opendb
+*.suo
+*.user
+_ReSharper.Caches/
+Win32-Debug/
+Win32-Release/
+x64-Debug/
+x64-Release/
+Debug/
+Release/
+packages/
+TestResults/
+**/bin/
+**/obj/
+**/.vs/
+.vs/
+MMWebApi/.vs
+
+# Configuration files or files with sensitive data
+#*.config
+#**/ExchangeConfig.csv
+
+# Ignore autoconf / automake files
+Makefile.in
+aclocal.m4
+configure
+build-aux/
+autom4te.cache/
+
+# macOS files
+.DS_Store
+
+# Ignore cmake generated directories and files.
+CMakeFiles
+CTestTestfile.cmake
+Makefile
+cmake_install.cmake
+
+# REAL IGNORE STARTS HERE
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+.vs/
+
+# Visual Studio Code
+.vscode
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn

@@ -26,7 +26,10 @@ namespace WebApiNet7.Services
 
             try
             {
-                // TODO: validate and check user and pass
+                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                    return authenticationResult.WithError("invalid-login", "Invalid email or password");
+
+                // TODO: actually validate and check user/pass
                 await Task.Delay(10);
 
                 var roles = new List<string> { "admin" };

@@ -123,6 +123,14 @@ try
 
     app.MapEndpoints();
 
+    app.UseCors(builder =>
+    {
+        builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+
     app.UseSerilogRequestLogging();
     app.UseForwardedHeaders();
     app.UseHealthChecks("/health");
@@ -156,5 +164,4 @@ finally
 }
 
 public partial class Program
-{
-}
+{ }

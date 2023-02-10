@@ -17,7 +17,7 @@ namespace WebApiNet7.Api.Modules.Reports
         {
             #region Queries
 
-            // Get General
+            // Get General Cached
             endpoints.MapGet("/api/reports/general", Results<Ok<long>, NotFound> (
                     IHttpContextAccessor httpContextAccessor,
                     IMapper mapper) =>
@@ -30,7 +30,7 @@ namespace WebApiNet7.Api.Modules.Reports
                 .WithTags("Reports");
 
 
-            // Get Memory Service Count
+            // Get Authenticated NOT Cached
             endpoints.MapGet("/api/reports/service", async Task<Results<Ok<string>, NotFound>> (
                     IReportingService reportingService,
                     ILogger<ReportsModule> logger,
@@ -40,7 +40,7 @@ namespace WebApiNet7.Api.Modules.Reports
 
                     logger.LogInformation($"Got Count {id}");
 
-                    return TypedResults.Ok(id.ToString());
+                    return TypedResults.Ok($"Authenticated NOT Cached! [{id}]");
                 })
                 .RequireAuthorization()
                 //.CacheOutput(o => o.NoCache())  // disable caching for NON-authenticated api
@@ -48,18 +48,17 @@ namespace WebApiNet7.Api.Modules.Reports
                 .WithTags("Reports");
 
 
-            // Get Authenticated first
+            // Get Authenticated Cached
             endpoints.MapGet("/api/reports/{id:long}", async Task<Results<Ok<string>, NotFound>> (long id,
+                    IReportingService reportingService,
                     IMapper mapper) =>
                 {
-                    if (id <= 0)
-                        return TypedResults.NotFound();
+                    var count = await reportingService.GetCurrentCount();
 
-                    await Task.Delay(100);
-
-                    return TypedResults.Ok("AUTHENTICATED!");
+                    return TypedResults.Ok($"Authenticated Cached! [{count}]");
                 })
                 .RequireAuthorization()
+                .CacheOutput("OutputCacheWithAuthPolicy")
                 .WithName("GetRealtimeReports")
                 .WithTags("Reports");
 
@@ -117,6 +116,7 @@ namespace WebApiNet7.Api.Modules.Reports
                             new RecordsModel { Id = 3, Name = "Kenny" },
                             new RecordsModel { Id = 4, Name = "Denny" },
                             new RecordsModel { Id = 5, Name = "Benny" },
+                            new RecordsModel { Id = Convert.ToInt32(id), Name = "CACHED?" },
                         };
 
                         return TypedResults.Ok(records

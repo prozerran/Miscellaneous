@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using WebApiNet7.Api.Modules.Reports.Models;
 
 namespace WebApiNet7.Api.Modules.Reports
 {
@@ -7,9 +8,7 @@ namespace WebApiNet7.Api.Modules.Reports
         public ReportsMappingProfile()
         {
             //Queries
-            //CreateMap<DailyStrategyJobPerformanceModel, Report>();
-            //CreateMap<DailyStrategyJobPerformanceModel, DailyStrategyJob>();
-            //CreateMap<DailyPositionPerformanceModel, DailyPosition>();
+            CreateMap<RecordsModel, Records>();
         }
     }
 }

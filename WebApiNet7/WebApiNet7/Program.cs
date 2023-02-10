@@ -1,25 +1,69 @@
 
 using Serilog;
+using Serilog.Events;
 
 using WebApiNet7.Api.Extensions;
 using WebApiNet7.Api.Policies;
 using WebApiNet7.Services;
+using WebApiNet7.Models;
 
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using WebApiNet7.Models;
+
+using System.Text.Json.Serialization;
 
 try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    #region Build Host
+
     // Serilog
-    builder.Host.UseSerilog((ctx, lc) =>
-        lc.WriteTo.Console()
-        .MinimumLevel.Verbose());
+    builder.Host.UseSerilog((_, logger) =>
+    {
+        logger.MinimumLevel.Information()
+            .MinimumLevel.Override("System.Net.Http.HttpClient", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Mvc.RazorPages", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Mvc.Infrastructure", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Mvc.ViewFeatures", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Hosting.Diagnostics", LogEventLevel.Warning)
+            .MinimumLevel.Override("Serilog.AspNetCore.RequestLoggingMiddleware", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Authentication.JwtBearer", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Routing.EndpointMiddleware", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Authorization.DefaultAuthorizationService", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler", LogEventLevel.Warning)
+            .Enrich.FromLogContext();
+
+        // Only output to console if we're in the Development Environment
+        if (builder.Environment.IsDevelopment())
+        {
+            logger.WriteTo.Console(outputTemplate: "{Timestamp:HH:mm:ss} [{Level:u3}] ({AssemblyName}) {SourceContext} {Message} {Exception} {NewLine}");
+            logger.WriteTo.File("webapi_.log", rollingInterval: RollingInterval.Day);
+        }
+    });
+
+    #endregion
+
+    #region Build Configurations
 
     // configs
     builder.ConfigureOptions<JwtOptions>();
+
+    #endregion
+
+    #region Build Services
+
+    // preliminaries
+    builder.Services.Configure<JsonOptions>(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
+
+    builder.Services.AddControllers().AddJsonOptions(options => 
+    { 
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); 
+    });
+
+    builder.Services.AddHttpContextAccessor();
 
     // Add services to the container.
     builder.Services.AddTransient<IUserAuthenticationService, UserAuthenticationService>();
@@ -38,7 +82,6 @@ try
     {
         config.AddMaps(typeof(Program));
     });
-
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
@@ -64,8 +107,11 @@ try
     //    options.Filters.Add(new ResponseCacheAttribute { NoStore = true, Location = ResponseCacheLocation.None });
     //});
 
+    #endregion
 
     var app = builder.Build();
+
+    #region App Use
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
@@ -77,13 +123,21 @@ try
 
     app.MapEndpoints();
 
-    //app.UseCookiePolicy();
+    app.UseSerilogRequestLogging();
+    app.UseForwardedHeaders();
+    app.UseHealthChecks("/health");
+    app.UseStaticFiles();
+
+    app.UseCookiePolicy();
     app.UseRouting();
     app.UseOutputCache();   // must be placed after CORS and Routing
 
     app.UseAuthentication();
     app.UseAuthorization();
-    //app.MapDefaultControllerRoute();
+
+    app.MapDefaultControllerRoute();
+
+    #endregion
 
     app.Run();
 }

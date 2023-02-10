@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
+using MinimalApis.Extensions.Binding;
 using WebApiNet7.Api.Extensions;
 using WebApiNet7.Api.Helpers;
+using WebApiNet7.Api.Modules.Reports.Models;
 using WebApiNet7.Services;
 
 namespace WebApiNet7.Api.Modules.Reports
@@ -13,6 +16,19 @@ namespace WebApiNet7.Api.Modules.Reports
         public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
         {
             #region Queries
+
+            // Get General
+            endpoints.MapGet("/api/reports/general", Results<Ok<long>, NotFound> (
+                    IHttpContextAccessor httpContextAccessor,
+                    IMapper mapper) =>
+                {
+                    var id = httpContextAccessor.GetUserId();
+
+                    return TypedResults.Ok(id);
+                })
+                .WithName("GetGeneral")
+                .WithTags("Reports");
+
 
             // Get Memory Service Count
             endpoints.MapGet("/api/reports/service", async Task<Results<Ok<string>, NotFound>> (
@@ -67,13 +83,54 @@ namespace WebApiNet7.Api.Modules.Reports
 
                     await Task.Delay(100);
 
-                    return TypedResults.Ok("CACHED!");
+                    return id > 0
+                        ? TypedResults.Ok($"Ok, Got {id}")
+                        : TypedResults.Problem("unknown-problem", "The service may be corrupt");
                 })
                 .RequireAuthorization()
                 .CacheOutput("OutputCacheWithAuthPolicy")
                 .WithName("GetHistoricalReports")
                 .WithTags("Reports");
 
+
+            #endregion
+
+            #region Commands
+
+            // Post Input
+            endpoints.MapPost("/api/reports/input", async Task<Results<ValidationProblem, Ok<List<Records>>, ProblemHttpResult>> (Validated<InputModel> request,
+                    IHttpContextAccessor httpContextAccessor,
+                    IReportingService reportingService,
+                    IMapper mapper) =>
+                {
+                    if (!request.IsValid || request.Value == null)
+                        return TypedResults.ValidationProblem(request.Errors);
+
+                    try
+                    {
+                        var id = await reportingService.GetCurrentCount();
+
+                        var records = new List<RecordsModel>
+                        {
+                            new RecordsModel { Id = 1, Name = "Jenny" },
+                            new RecordsModel { Id = 2, Name = "Penny" },
+                            new RecordsModel { Id = 3, Name = "Kenny" },
+                            new RecordsModel { Id = 4, Name = "Denny" },
+                            new RecordsModel { Id = 5, Name = "Benny" },
+                        };
+
+                        return TypedResults.Ok(records
+                            .Select(mapper.Map<Records>)
+                            .ToList());
+                    }
+                    catch (Exception ex)
+                    {
+                        return ApiResults.Problem(ex.HResult.ToString(), ex.Message);
+                    }
+                })
+                .WithName("GetInputModel")
+                .WithTags("Reports")
+                .Accepts<InputModel>("application/json");
 
             #endregion
 

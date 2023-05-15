@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.1" />
+    <PackageReference Include="AWSSDK.AutoScaling" Version="3.7.104.26" />
+    <PackageReference Include="AWSSDK.CloudFormation" Version="3.7.105.21" />
+    <PackageReference Include="AWSSDK.CloudFront" Version="3.7.105.50" />
+    <PackageReference Include="AWSSDK.CloudTrail" Version="3.7.104.54" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.106.35" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.103.3" />
+    <PackageReference Include="AWSSDK.EC2" Version="3.7.134.3" />
+    <PackageReference Include="AWSSDK.ElastiCache" Version="3.7.104" />
+    <PackageReference Include="AWSSDK.ElasticBeanstalk" Version="3.7.101.66" />
+    <PackageReference Include="AWSSDK.ElasticLoadBalancingV2" Version="3.7.100.128" />
+    <PackageReference Include="AWSSDK.ElasticMapReduce" Version="3.7.104.1" />
+    <PackageReference Include="AWSSDK.Glacier" Version="3.7.101.66" />
+    <PackageReference Include="AWSSDK.Kinesis" Version="3.7.102.65" />
+    <PackageReference Include="AWSSDK.Lambda" Version="3.7.109.7" />
+    <PackageReference Include="AWSSDK.RDS" Version="3.7.118.1" />
+    <PackageReference Include="AWSSDK.RDSDataService" Version="3.7.100.128" />
+    <PackageReference Include="AWSSDK.Redshift" Version="3.7.101.63" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.104.14" />
+    <PackageReference Include="AWSSDK.SecretsManager" Version="3.7.102.40" />
+    <PackageReference Include="AWSSDK.SimpleEmailV2" Version="3.7.102.41" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.101.64" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.7.102.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

@@ -10,8 +10,8 @@ namespace ConsoleAppAWSRealTest
 {
     public class AmazonLambda
     {
-        private static string key = "AKIAZKESX5QVG4TIJU5U";
-        private static string secret = "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";
+        private static string key = "";
+        private static string secret = "";
 
         public async Task TestMyLambda()
         {

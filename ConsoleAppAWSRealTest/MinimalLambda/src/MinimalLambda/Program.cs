@@ -1,6 +1,17 @@
 
 // https://www.youtube.com/watch?v=rImaNyfKhZk
 
+// dotnet lambda list-functions
+// dotnet lambda deploy-function
+
+/*
+invoke-function - invokes a Lambda function with a specified payload
+create-function - creates a new Lambda function based on a deployment package
+delete-function - deletes a Lambda function
+get-function-configuration - retrieves the configuration settings for a specified Lambda function
+update-function-configuration - updates the configuration settings for a specified Lambda function
+ */
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

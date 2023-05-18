@@ -15,6 +15,7 @@ namespace MinimalLambda.Controllers
 
         /// <summary>
         /// Perform x + y
+        /// https://xozx7yvmqc3tdsgeskiwtuyjxi0ltlbf.lambda-url.ap-southeast-1.on.aws/calculator/add/8/9
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -63,6 +64,24 @@ namespace MinimalLambda.Controllers
         {
             _logger.LogInformation($"{x} divide {y} is {x / y}");
             return x / y;
+        }
+
+        /// <summary>
+        /// Perform Factorial N
+        /// https://xozx7yvmqc3tdsgeskiwtuyjxi0ltlbf.lambda-url.ap-southeast-1.on.aws/calculator/fact/8
+        /// </summary>
+        /// <param name="n"></param>
+        [HttpGet("fact/{n}")]
+        public int Factorial(int n)
+        {
+            if (n == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return n * Factorial(n - 1);
+            }
         }
     }
 }

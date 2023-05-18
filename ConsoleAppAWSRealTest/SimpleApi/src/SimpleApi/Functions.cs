@@ -33,7 +33,7 @@ namespace SimpleApi
             var rsp = new
             {
                 query,
-                message = "Hello, This is from Tim Hsu!"
+                message = "Hello, This is from Tim Hsu PART 2!"
             };
 
             var response = new APIGatewayProxyResponse

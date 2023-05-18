@@ -15,7 +15,6 @@ namespace MinimalLambda.Controllers
 
         /// <summary>
         /// Perform x + y
-        /// https://xozx7yvmqc3tdsgeskiwtuyjxi0ltlbf.lambda-url.ap-southeast-1.on.aws/calculator/add/8/9
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -68,7 +67,6 @@ namespace MinimalLambda.Controllers
 
         /// <summary>
         /// Perform Factorial N
-        /// https://xozx7yvmqc3tdsgeskiwtuyjxi0ltlbf.lambda-url.ap-southeast-1.on.aws/calculator/fact/8
         /// </summary>
         /// <param name="n"></param>
         [HttpGet("fact/{n}")]

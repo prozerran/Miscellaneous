@@ -12,6 +12,8 @@ get-function-configuration - retrieves the configuration settings for a specifie
 update-function-configuration - updates the configuration settings for a specified Lambda function
  */
 
+// https://www.youtube.com/watch?v=2RpuujYjM1E
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

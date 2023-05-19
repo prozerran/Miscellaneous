@@ -47,6 +47,18 @@ namespace SimpleApi
             return response;
         }
 
+        public APIGatewayProxyResponse Authorize(APIGatewayProxyRequest request, ILambdaContext context)
+        {
+            var response = new APIGatewayProxyResponse
+            {
+                StatusCode = (int)HttpStatusCode.OK,
+                Body = "",
+                Headers = new Dictionary<string, string> { { "Content-Type", "text/plain" } }
+            };
+            return response;
+        }
+
+
         public async Task<DateTime> GetCurrentTime(ILambdaContext context)
         {
             return await Task.FromResult(DateTime.UtcNow);

@@ -21,7 +21,7 @@ builder.Services.AddControllers();
 
 // Add AWS Lambda support. When application is run in Lambda Kestrel is swapped out as the web server with Amazon.Lambda.AspNetCoreServer. This
 // package will act as the webserver translating request and responses between the Lambda event source and ASP.NET Core.
-builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);    // default is RestApi
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);    // DIRECT call to Lambda, not going through API Gateway
 
 var app = builder.Build();
 

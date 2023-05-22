@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleApi", "SimpleApi\src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalLambda", "MinimalLambda\src\MinimalLambda\MinimalLambda.csproj", "{6C7D9EBF-40C6-4A61-9621-599A3516CA7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOnLambda", "ApiOnLambda\ApiOnLambda.csproj", "{E15A61B8-73DA-4D7A-94E2-8CDB923D3104}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcLambda", "MvcLambda\MvcLambda.csproj", "{75AA39B9-54FD-4569-94B8-8283626B12E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{6C7D9EBF-40C6-4A61-9621-599A3516CA7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C7D9EBF-40C6-4A61-9621-599A3516CA7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C7D9EBF-40C6-4A61-9621-599A3516CA7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E15A61B8-73DA-4D7A-94E2-8CDB923D3104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E15A61B8-73DA-4D7A-94E2-8CDB923D3104}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E15A61B8-73DA-4D7A-94E2-8CDB923D3104}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E15A61B8-73DA-4D7A-94E2-8CDB923D3104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75AA39B9-54FD-4569-94B8-8283626B12E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75AA39B9-54FD-4569-94B8-8283626B12E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75AA39B9-54FD-4569-94B8-8283626B12E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75AA39B9-54FD-4569-94B8-8283626B12E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

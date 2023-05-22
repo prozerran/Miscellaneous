@@ -11,6 +11,6 @@
   "function-runtime": "dotnet6",
   "function-memory-size": 256,
   "function-timeout": 30,
-  "function-handler": "WebApiLambda::WebApiLambda.LambdaEntryPoint::FunctionHandlerAsync",
+  "function-handler": "MvcLambda",
   "function-url-enabled": true
 }

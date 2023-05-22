@@ -1,4 +1,4 @@
-namespace ApiOnLambda
+namespace MvcLambda
 {
     public class WeatherForecast
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApiOnLambda.Controllers
+namespace MvcLambda.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -18,6 +18,8 @@ namespace ApiOnLambda.Controllers
             _logger = logger;
         }
 
+        // https://glr7pi9yub.execute-api.ap-southeast-1.amazonaws.com/Live/WeatherForecast
+
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -28,6 +30,15 @@ namespace ApiOnLambda.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        // https://nnc29xgvo7.execute-api.ap-southeast-1.amazonaws.com/Live/WeatherForecast/add/5/6
+
+        [HttpGet("add/{x}/{y}")]
+        public IActionResult Add(int x, int y)
+        {
+            var str = string.Format($"Try to do {x} and {y}");
+            return Ok(str);
         }
     }
 }

@@ -2,6 +2,10 @@
 
 //  dotnet lambda deploy-function
 
+// debug
+// https://www.youtube.com/watch?v=unt2-B0QQFQ
+// https://www.youtube.com/watch?v=MgukevJCzMA
+
 namespace RealLambda.Controllers
 {
     [ApiController]

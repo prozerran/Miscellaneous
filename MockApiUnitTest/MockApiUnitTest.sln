@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockApiUnitTest", "MockApiUnitTest\MockApiUnitTest.csproj", "{D7DF3A7A-84FB-409A-822E-ADE959EF528E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockApiUnitTest.Tests", "MockApiUnitTest.Tests\MockApiUnitTest.Tests.csproj", "{44475F55-DFDC-4A03-B8C3-8ECF72D01326}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D7DF3A7A-84FB-409A-822E-ADE959EF528E} = {D7DF3A7A-84FB-409A-822E-ADE959EF528E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7DF3A7A-84FB-409A-822E-ADE959EF528E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7DF3A7A-84FB-409A-822E-ADE959EF528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7DF3A7A-84FB-409A-822E-ADE959EF528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7DF3A7A-84FB-409A-822E-ADE959EF528E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44475F55-DFDC-4A03-B8C3-8ECF72D01326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44475F55-DFDC-4A03-B8C3-8ECF72D01326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44475F55-DFDC-4A03-B8C3-8ECF72D01326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44475F55-DFDC-4A03-B8C3-8ECF72D01326}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ED76A87-CAFE-4CF4-ABD4-B4993B844F4F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,35 @@
+﻿{
+  "company": "ABC Corporation",
+  "employees": [
+    {
+      "name": "John Doe",
+      "age": 30,
+      "company": "ABC Corp",
+      "sex": "Male",
+      "websites": [
+        "https://www.johndoe.com",
+        "https://www.johndoeportfolio.com"
+      ]
+    },
+    {
+      "name": "Jane Smith",
+      "age": 28,
+      "company": "ABC Corp",
+      "sex": "Female",
+      "websites": [
+        "https://www.janesmith.com",
+        "https://www.janesmithportfolio.com"
+      ]
+    },
+    {
+      "name": "Mike Johnson",
+      "age": 35,
+      "company": "ABC Corp",
+      "sex": "Male",
+      "websites": [
+        "https://www.mikejohnson.com",
+        "https://www.mikejohnsonportfolio.com"
+      ]
+    }
+  ]
+}

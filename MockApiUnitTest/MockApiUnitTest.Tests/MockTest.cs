@@ -23,15 +23,18 @@ namespace MockApiUnitTest.Tests
 
         public MockTest()
         {
-            //_dbContextOptions = new DbContextOptions<CoreContext>()
-            //    .UseSqlite(_connection)
-            //    .Options;
+            _connection = new SqliteConnection("Data source=:memory:");
+            _connection.Open();
 
-            //using var ctx = new CoreContext(_dbContextOptions);
-            //ctx.Database.EnsureCreated();
+            _dbContextOptions = new DbContextOptionsBuilder<CoreContext>()
+                .UseSqlite(_connection)
+                .Options;
 
-            //_httpClient = new HttpClient();
-            //_redisCacheService = new Mock<IRedisCacheService>();
+            using var ctx = new CoreContext(_dbContextOptions);
+            ctx.Database.EnsureCreated();
+
+            _httpClient = new HttpClient();
+            _redisCacheService = new Mock<IRedisCacheService>();
         }
 
         [Fact]
@@ -41,7 +44,9 @@ namespace MockApiUnitTest.Tests
 
             var value = await _redis.HashGetAsync("Key", "en-GB");
 
-            await VerifyJson(value).DontIgnoreEmptyCollections();
+            await VerifyJson(value)
+                .DontScrubDateTimes()   // for DatetimeOffset
+                .DontIgnoreEmptyCollections();
         }
 
         private ProgramService CreateService()
